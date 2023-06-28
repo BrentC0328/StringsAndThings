@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.ArrayList;
+
 /**
  * @author tariq
  */
@@ -15,7 +17,18 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        Integer result = 0;
+
+        String[] splitInput = input.split(" ");
+
+        for (int i = 0; i < splitInput.length; i++){
+            String holdNumber = splitInput[i];
+            if (holdNumber.endsWith("y") || holdNumber.endsWith("z")){
+                result += 1;
+            }
+        }
+
+        return result;
     }
 
     /**
