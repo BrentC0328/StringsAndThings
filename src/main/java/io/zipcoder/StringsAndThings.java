@@ -59,33 +59,22 @@ public class StringsAndThings {
     public Boolean containsEqualNumberOfIsAndNot(String input){
         String is = "is";
         String not = "not";
-        int notCount = 0;
-        int isCount = 0;
+        int notCounter = 0;
+        int isCounter = 0;
 
-
-       for (int i = 0; i < input.length(); i++){
-           char letter1 = input.charAt(i);
-           char letter2 = input.charAt(i + 1);
-           char letter3 = input.charAt(i + 2);
-           String checkedString = String.valueOf((letter2 + letter1));
-           String checkedString2= String.valueOf((letter2 + letter1 + letter3));
-           if(checkedString.equals(is) && (i < input.length())){
-               isCount++;
-
-               if(checkedString2.equals(not)){
-                   notCount++;
-               }
-           }
-       }
-
-        System.out.println(isCount);
-        System.out.println(notCount);
-
-        if(isCount == notCount){
-            return true;
+        for(int i = 0; i < input.length() - 1; i++){
+            if(input.charAt(i) == 'i' && input.charAt(i + 1) == 's'){
+                isCounter++;
+            }
         }
 
-        return false;
+        for(int i = 0; i < input.length() - 2; i++){
+            if(input.charAt(i) == 'n' && input.charAt(i + 1) == 'o' && input.charAt(i + 2) == 't'){
+                notCounter++;
+            }
+        }
+
+        return isCounter == notCounter;
     }
 
     /**
@@ -96,7 +85,20 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        boolean result = true;
+
+
+        for (int i = 1; i < input.length()-1; i++){
+            Character checkedLetter = input.charAt(i);
+            if(checkedLetter.equals('g') && input.charAt(i + 1) != 'g' && input.charAt(i - 1) != 'g'){
+                result = false;
+            }
+        }
+
+
+
+
+        return result;
     }
 
 
@@ -108,6 +110,17 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int tripleCounter = 0;
+
+        for (int i = 0; i < input.length() -3 ; i++ ){
+            char checkedLetter = input.charAt(i);
+            if ((checkedLetter == (input.charAt(i + 1))) &&
+                    (checkedLetter == (input.charAt(i + 2)))){
+                tripleCounter++;
+            }
+        }
+
+
+        return tripleCounter;
     }
 }
