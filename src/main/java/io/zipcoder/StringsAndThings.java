@@ -41,7 +41,11 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        String result = "";
+
+        result = base.replace(remove, "");
+
+        return result;
     }
 
     /**
@@ -53,7 +57,35 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        String is = "is";
+        String not = "not";
+        int notCount = 0;
+        int isCount = 0;
+
+
+       for (int i = 0; i < input.length(); i++){
+           char letter1 = input.charAt(i);
+           char letter2 = input.charAt(i + 1);
+           char letter3 = input.charAt(i + 2);
+           String checkedString = String.valueOf((letter2 + letter1));
+           String checkedString2= String.valueOf((letter2 + letter1 + letter3));
+           if(checkedString.equals(is) && (i < input.length())){
+               isCount++;
+
+               if(checkedString2.equals(not)){
+                   notCount++;
+               }
+           }
+       }
+
+        System.out.println(isCount);
+        System.out.println(notCount);
+
+        if(isCount == notCount){
+            return true;
+        }
+
+        return false;
     }
 
     /**
